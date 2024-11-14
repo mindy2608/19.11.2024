@@ -1,0 +1,136 @@
+/* styles.css */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2d3e50, #1a2930);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+}
+
+.headline {
+    font-size: 3rem;
+    animation: pop 1s ease-in-out infinite alternate;
+}
+
+.message {
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+.celebrate-btn {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #ff6b6b;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    transition: background 0.3s;
+}
+
+.celebrate-btn:hover {
+    background-color: #ff3b3b;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+#confettiCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+/* styles.css */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #2d3e50, #1a2930);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+}
+
+.container {
+    width: 90%; /* Co lại để vừa khung điện thoại */
+    max-width: 500px; /* Giới hạn chiều rộng trên các màn hình lớn */
+}
+
+.headline {
+    font-size: 2rem; /* Giảm kích thước chữ */
+    animation: pop 1s ease-in-out infinite alternate;
+}
+
+.message {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.celebrate-btn {
+    padding: 8px 15px;
+    font-size: 1rem;
+    background-color: #ff6b6b;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    transition: background 0.3s;
+}
+
+.celebrate-btn:hover {
+    background-color: #ff3b3b;
+}
+
+@keyframes pop {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+#confettiCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .headline {
+        font-size: 1.8rem; /* Điều chỉnh cỡ chữ */
+    }
+
+    .message {
+        font-size: 1rem; /* Điều chỉnh cỡ chữ */
+    }
+
+    .celebrate-btn {
+        padding: 7px 12px;
+        font-size: 0.9rem;
+    }
+}

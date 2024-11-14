@@ -1,0 +1,71 @@
+// script.js
+
+document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.getElementById("confettiCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Thiết lập kích thước canvas
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    const confettiPieces = [];
+    const colors = ["#FFD700", "#FF4500", "#00BFFF", "#32CD32", "#FF69B4"];
+
+    // Tạo các mảnh pháo giấy
+    function createConfetti() {
+        for (let i = 0; i < 100; i++) { // Số lượng pháo giấy
+            confettiPieces.push({
+                x: Math.random() * canvas.width, // Vị trí ngang
+                y: Math.random() * canvas.height, // Vị trí dọc
+                size: Math.random() * 5 + 3, // Kích thước
+                color: colors[Math.floor(Math.random() * colors.length)], // Màu ngẫu nhiên
+                speedX: Math.random() * 2 - 1, // Tốc độ ngang
+                speedY: Math.random() * 3 + 1, // Tốc độ dọc
+                rotation: Math.random() * 360, // Góc xoay ban đầu
+                rotationSpeed: Math.random() * 2, // Tốc độ xoay
+            });
+        }
+    }
+
+    // Vẽ pháo giấy lên canvas
+    function drawConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        confettiPieces.forEach((piece) => {
+            ctx.save();
+            ctx.translate(piece.x, piece.y);
+            ctx.rotate((piece.rotation * Math.PI) / 180);
+            ctx.beginPath();
+            ctx.rect(-piece.size / 2, -piece.size / 2, piece.size, piece.size);
+            ctx.fillStyle = piece.color;
+            ctx.fill();
+            ctx.restore();
+
+            // Cập nhật vị trí và trạng thái xoay
+            piece.x += piece.speedX;
+            piece.y += piece.speedY;
+            piece.rotation += piece.rotationSpeed;
+
+            // Nếu ra khỏi màn hình, đặt lại vị trí
+            if (piece.y > canvas.height) {
+                piece.y = -piece.size;
+                piece.x = Math.random() * canvas.width;
+            }
+            if (piece.x > canvas.width || piece.x < -piece.size) {
+                piece.x = Math.random() * canvas.width;
+            }
+        });
+    }
+
+    // Chạy hiệu ứng
+    function animate() {
+        drawConfetti();
+        requestAnimationFrame(animate);
+    }
+
+    createConfetti();
+    animate();
+});
